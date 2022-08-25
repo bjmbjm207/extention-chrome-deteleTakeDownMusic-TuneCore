@@ -14,8 +14,13 @@ changeColor.addEventListener("click", async () => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: setPageBackgroundColor,
+    function: hideTakedownMusic,
   });
 });
-function Delete(){
-  console.log("Delete");
+function hideTakedownMusic() {
+  var music = document.getElementsByClassName('release-status down');
+  for (let i=0; i<music.length ; i++)
+  {
+    music[i].parentElement.style.display = 'none';
+  }
 }
